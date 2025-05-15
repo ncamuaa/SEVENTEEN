@@ -1,1 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SEVENTEEN</title>
+  <style>
+    html {
+      overflow-y: scroll;
+    }
 
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7cac9; /* Rose Quartz */
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #aec4e5;
+      padding: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: black;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+
+    .nav a:hover {
+      background-color: #dce4f2;
+    }
+
+    .slideshow-container {
+      max-width: 1000px;
+      height: 500px;
+      position: relative;
+      margin: 20px auto;
+      overflow: hidden;
+      background-color: #f8d7da;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .dot.active {
+      background-color: #555;
+    }
+
+    .fade {
+      animation-name: fade;
+      animation-duration: 1s;
+    }
+
+    @keyframes fade {
+      from {opacity: 0.4}
+      to {opacity: 1}
+    }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      line-height: 1.6;
+    }
+
+    .content h2 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <img src="logo.png" alt="Seventeen Logo">
+      <span>SEVENTEEN</span>
+    </div>
+    <div class="nav">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="discography.html">DISCOGRAPHY</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="achievements.html">ACHIEVEMENTS</a>
+    </div>
+  </div>
+
+  <!-- Slideshow -->
+  <div class="slideshow-container">
+    <div class="slide fade">
+      <img src="1.jpg" alt="Slide 1">
+    </div>
+    <div class="slide fade">
+      <img src="2.jpg" alt="Slide 2">
+    </div>
+    <div class="slide fade">
+      <img src="3.jpg" alt="Slide 3">
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <!-- SEVENTEEN Info Section -->
+  <div class="content">
+    <h2>About SEVENTEEN</h2>
+    <p>
+      SEVENTEEN is a South Korean boy group formed by PLEDIS Entertainment in 2015. The group consists of 13 members divided into three units: Hip-Hop, Vocal, and Performance. Known for their synchronized choreography, self-producing abilities, and tight teamwork, SEVENTEEN has gained immense popularity both domestically and internationally.
+    </p>
+    <p>
+      They debuted with the mini-album <strong>"17 Carat"</strong> and have since released numerous hits including <em>"Don't Wanna Cry," "Home," "Left & Right,"</em> and <em>"Hot."</em> The group's name represents the formula 13 members + 3 units + 1 team = 17.
+    </p>
+    <p>
+      SEVENTEEN has held successful world tours, topped music charts, and won multiple awards including Bonsang and Daesang awards. Their fandom, known as <strong>CARATs</strong>, supports them passionately worldwide.
+    </p>
+  </div>
+
+  <!-- JavaScript for Slideshow -->
+  <script>
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("slide");
+    const dots = document.getElementsByClassName("dot");
+
+    function showSlides() {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].classList.add("active");
+      setTimeout(showSlides, 3000); // 3 seconds
+    }
+
+    showSlides(); // Initial call
+  </script>
+
+</body>
+</html>
